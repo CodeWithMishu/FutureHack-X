@@ -1,0 +1,242 @@
+@import "tailwindcss";
+
+:root {
+  --font-space-grotesk: "Space Grotesk", sans-serif;
+  --font-jetbrains-mono: "JetBrains Mono", monospace;
+
+  /* Updated color palette */
+  --primary-orange: #f97316;
+  --primary-red: #dc2626;
+  --primary-amber: #fbbf24;
+  --accent-emerald: #10b981;
+  --accent-teal: #14b8a6;
+  --dark-bg: #0a0a0a;
+  --dark-secondary: #1a1a1a;
+  --dark-accent: #2a2a2a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-space-grotesk);
+  background: var(--dark-bg);
+  color: white;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--dark-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    var(--primary-orange),
+    var(--primary-red)
+  );
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    var(--primary-red),
+    var(--primary-amber)
+  );
+}
+
+/* Animated background */
+.animated-bg {
+  background: linear-gradient(-45deg, #0a0a0a, #1a1a1a, #2a2a2a, #0f0f0f);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Glass morphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Gradient text effects */
+.gradient-text {
+  background: linear-gradient(
+    135deg,
+    var(--primary-orange),
+    var(--primary-red),
+    var(--primary-amber)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glow-text {
+  text-shadow: 0 0 20px rgba(249, 115, 22, 0.6);
+}
+
+/* Button effects */
+.glow-button {
+  box-shadow: 0 0 30px rgba(249, 115, 22, 0.3);
+  transition: all 0.3s ease;
+}
+
+.glow-button:hover {
+  box-shadow: 0 0 50px rgba(249, 115, 22, 0.5);
+}
+
+/* Animation keyframes */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(249, 115, 22, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(249, 115, 22, 0.8);
+  }
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Animation classes */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite alternate;
+}
+
+.animate-slide-in {
+  animation: slide-in 0.6s ease-out;
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Card effects */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Utility classes */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-preserve {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+/* Loading states */
+.loading-skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.05) 25%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.05) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Focus states */
+.focus-glow:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.3);
+}
+
+/* Text selection */
+::selection {
+  background: rgba(249, 115, 22, 0.3);
+  color: white;
+}
+
+/* Hide default focus outline */
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
+/* Responsive design helpers */
+@media (max-width: 768px) {
+  .text-responsive {
+    font-size: clamp(1rem, 4vw, 1.5rem);
+  }
+  
+  .heading-responsive {
+    font-size: clamp(1.5rem, 6vw, 3rem);
+  }
+}
