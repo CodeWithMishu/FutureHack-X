@@ -2,7 +2,14 @@
 
 import { useRef, useMemo } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Points, PointMaterial, Float, Sphere, Ring, Torus } from "@react-three/drei";
+import {
+  Points,
+  PointMaterial,
+  Float,
+  Sphere,
+  Ring,
+  Torus,
+} from "@react-three/drei";
 import * as THREE from "three";
 
 // Animated particles component
@@ -25,7 +32,7 @@ function AnimatedParticles() {
     if (ref.current) {
       ref.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.1) * 0.1;
       ref.current.rotation.y = Math.sin(state.clock.elapsedTime * 0.15) * 0.1;
-      
+
       // Mouse interaction
       const mouse = state.mouse;
       ref.current.rotation.x += mouse.y * 0.05;
@@ -115,7 +122,10 @@ function FloatingGeometry() {
         floatIntensity={2}
         position={[-4, -8, -18]}
       >
-        <Torus args={[1.5, 0.2, 16, 32]} rotation={[0, Math.PI / 6, Math.PI / 4]}>
+        <Torus
+          args={[1.5, 0.2, 16, 32]}
+          rotation={[0, Math.PI / 6, Math.PI / 4]}
+        >
           <meshBasicMaterial color="#4fc3f7" transparent opacity={0.3} />
         </Torus>
       </Float>
@@ -130,20 +140,36 @@ function WireframeSpheres() {
   useFrame((state) => {
     if (groupRef.current) {
       groupRef.current.rotation.y = state.clock.elapsedTime * 0.1;
-      groupRef.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.05) * 0.2;
+      groupRef.current.rotation.x =
+        Math.sin(state.clock.elapsedTime * 0.05) * 0.2;
     }
   });
 
   return (
     <group ref={groupRef}>
       <Sphere args={[12, 32, 32]} position={[0, 0, -20]}>
-        <meshBasicMaterial color="#ff6b35" wireframe transparent opacity={0.1} />
+        <meshBasicMaterial
+          color="#ff6b35"
+          wireframe
+          transparent
+          opacity={0.1}
+        />
       </Sphere>
       <Sphere args={[8, 24, 24]} position={[0, 0, -15]}>
-        <meshBasicMaterial color="#4fc3f7" wireframe transparent opacity={0.15} />
+        <meshBasicMaterial
+          color="#4fc3f7"
+          wireframe
+          transparent
+          opacity={0.15}
+        />
       </Sphere>
       <Sphere args={[15, 32, 32]} position={[0, 0, -25]}>
-        <meshBasicMaterial color="#ffa726" wireframe transparent opacity={0.08} />
+        <meshBasicMaterial
+          color="#ffa726"
+          wireframe
+          transparent
+          opacity={0.08}
+        />
       </Sphere>
     </group>
   );
