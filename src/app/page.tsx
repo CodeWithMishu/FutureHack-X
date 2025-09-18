@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Calendar, Code2, Target } from "lucide-react";
-import DraggableAIBackground from "@/components/DraggableAIBackground";
+import ClientOnlyBackground from "@/components/ClientOnlyBackground";
 import CountdownTimer3D from "@/components/CountdownTimer3D";
 import RegisterButton from "@/components/RegisterButton";
 import SkillNetLogo from "@/components/SkillNetLogoSVG";
@@ -20,7 +20,7 @@ export default function Home() {
   return (
     <>
       {/* Draggable AI Hackathon 3D Background */}
-      <DraggableAIBackground />
+      <ClientOnlyBackground />
 
       {/* Mouse Tracker */}
       <MouseTracker />
