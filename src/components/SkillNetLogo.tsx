@@ -72,16 +72,6 @@ const SkillNetLogo = ({
           </svg>
         </div>
       </div>
-
-      {/* Text - More Prominent */}
-      <div className="text-[#FF6B35] font-bold tracking-wider drop-shadow-lg">
-        <div
-          className="bg-gradient-to-r from-[#FF6B35] to-[#FF8A65] bg-clip-text text-transparent font-extrabold"
-          style={{ fontSize: height * 0.35, lineHeight: 1.1 }}
-        >
-          Enabling Future Skills
-        </div>
-      </div>
     </div>
   );
 };
