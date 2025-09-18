@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import { Calendar, Code2, Target } from "lucide-react";
 import CountdownTimer3D from "@/components/CountdownTimer3D";
 import RegisterButton from "@/components/RegisterButton";
+import Hero3DBackground from "@/components/Hero3DBackground";
+import Enhanced3DBackground from "@/components/Enhanced3DBackground";
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -18,61 +20,65 @@ export default function Home() {
       {/* Main Container */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hero Section */}
-        <section 
-          className="min-h-screen flex flex-col items-center justify-center py-16 space-y-16 relative"
+        <section
+          className="min-h-screen flex flex-col items-center justify-center py-16 space-y-16 relative overflow-hidden"
           style={{
             backgroundImage: "url('/hero-bg.jpg')",
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
           }}
         >
-          {/* Background Overlay for better text readability */}
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+          {/* 3D Animated Background */}
+          <Hero3DBackground />
+          <Enhanced3DBackground />
           
+          {/* Background Overlay for better text readability */}
+          <div className="absolute inset-0 bg-black/40 backdrop-blur-sm z-10"></div>
+
           {/* Content with higher z-index */}
-          <div className="relative z-10 flex flex-col items-center justify-center space-y-16 w-full">
+          <div className="relative z-20 flex flex-col items-center justify-center space-y-16 w-full">
             {/* Header */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 30 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-center space-y-8"
-          >
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white tracking-tight">
-              FutureHack-X
-            </h1>
-            <p className="text-lg sm:text-xl md:text-2xl text-orange-300 font-medium">
-              Powered by SkillNet Learning
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-4 text-base sm:text-lg md:text-xl text-gray-300">
-              <span className="font-semibold">Innovate</span>
-              <span className="text-orange-400 text-2xl">•</span>
-              <span className="font-semibold">Create</span>
-              <span className="text-orange-400 text-2xl">•</span>
-              <span className="font-semibold">Future</span>
-            </div>
-          </motion.div>
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="text-center space-y-8"
+            >
+              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white tracking-tight">
+                FutureHack-X
+              </h1>
+              <p className="text-lg sm:text-xl md:text-2xl text-orange-300 font-medium">
+                Powered by SkillNet Learning
+              </p>
+              <div className="flex flex-wrap items-center justify-center gap-4 text-base sm:text-lg md:text-xl text-gray-300">
+                <span className="font-semibold">Innovate</span>
+                <span className="text-orange-400 text-2xl">•</span>
+                <span className="font-semibold">Create</span>
+                <span className="text-orange-400 text-2xl">•</span>
+                <span className="font-semibold">Future</span>
+              </div>
+            </motion.div>
 
-          {/* Countdown Timer - Centered and Single */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="w-full max-w-4xl"
-          >
-            <CountdownTimer3D targetDate="2026-01-04T00:00:00Z" />
-          </motion.div>
+            {/* Countdown Timer - Centered and Single */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="w-full max-w-4xl"
+            >
+              <CountdownTimer3D targetDate="2026-01-04T00:00:00Z" />
+            </motion.div>
 
-          {/* Large Prominent Register Button */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="w-full max-w-lg"
-          >
-            <RegisterButton />
-          </motion.div>
+            {/* Large Prominent Register Button */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="w-full max-w-lg"
+            >
+              <RegisterButton />
+            </motion.div>
           </div>
         </section>
 

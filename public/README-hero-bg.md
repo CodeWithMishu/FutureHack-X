@@ -6,6 +6,7 @@ Please save your futuristic space/technology background image as:
 This file should be saved in the /public folder.
 
 The image will be used as the background for the hero section with the following properties:
+
 - Background size: cover
 - Background position: center
 - Background repeat: no-repeat
