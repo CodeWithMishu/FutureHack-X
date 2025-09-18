@@ -6,7 +6,7 @@ import { Calendar, Code2, Target } from "lucide-react";
 import ClientOnlyBackground from "@/components/ClientOnlyBackground";
 import CountdownTimer3D from "@/components/CountdownTimer3D";
 import RegisterButton from "@/components/RegisterButton";
-import SkillNetLogo from "@/components/SkillNetLogoSVG";
+import SkillNetLogo from "@/components/SkillNetLogo";
 import MouseTracker from "@/components/MouseTracker";
 import ScrollToBottomIndicator from "@/components/ScrollToBottomIndicator";
 
@@ -50,18 +50,18 @@ export default function Home() {
                 >
                   <div className="bg-black/30 backdrop-blur-sm rounded-xl p-6 lg:p-8 border border-orange-500/20">
                     <SkillNetLogo
-                      width={280}
-                      height={70}
+                      width={400}
+                      height={120}
                       className="sm:hidden"
                     />
                     <SkillNetLogo
-                      width={360}
-                      height={90}
+                      width={520}
+                      height={150}
                       className="hidden sm:block lg:hidden"
                     />
                     <SkillNetLogo
-                      width={440}
-                      height={110}
+                      width={640}
+                      height={180}
                       className="hidden lg:block"
                     />
                   </div>

@@ -200,7 +200,7 @@ function MeteorSystem() {
       "medium",
       "large",
     ];
-    const weights = [0.5, 0.35, 0.15]; // More balanced: 50% small, 35% medium, 15% large
+    const weights = [0.6, 0.3, 0.1]; // 60% small, 30% medium, 10% large
 
     // Weighted random selection
     const random = Math.random();
@@ -214,58 +214,25 @@ function MeteorSystem() {
       }
     }
 
-    // Much wider and varied spawn positions from different locations
-    const spawnVariation = Math.random();
-    let startX: number, startY: number, startZ: number;
+    // Random spawn position (top edge of screen, spread across width)
+    const startX = (Math.random() - 0.5) * 120; // Wider spawn area
+    const startY = 55 + Math.random() * 25; // Higher spawn height
+    const startZ = (Math.random() - 0.5) * 100; // Deeper spawn area
 
-    if (spawnVariation < 0.7) {
-      // 70% spawn from top (normal meteor shower)
-      startX = (Math.random() - 0.5) * 150; // Even wider spawn area
-      startY = 60 + Math.random() * 30; // Higher and more varied spawn height
-      startZ = (Math.random() - 0.5) * 120; // Much deeper spawn area
-    } else if (spawnVariation < 0.85) {
-      // 15% spawn from sides (diagonal meteors)
-      startX =
-        Math.random() < 0.5
-          ? -80 - Math.random() * 20
-          : 80 + Math.random() * 20;
-      startY = 20 + Math.random() * 40;
-      startZ = (Math.random() - 0.5) * 100;
-    } else {
-      // 15% spawn from far back (depth meteors)
-      startX = (Math.random() - 0.5) * 100;
-      startY = 40 + Math.random() * 20;
-      startZ = -60 - Math.random() * 40;
-    }
-
-    // Enhanced velocity system for more dynamic movement
-    const baseSpeed = size === "large" ? 20 : size === "medium" ? 16 : 12;
-    const speedVariation = Math.random() * 10; // More speed variation
-    const horizontalDrift = (Math.random() - 0.5) * 12; // Increased horizontal movement
-    const depthMovement = (Math.random() - 0.5) * 8; // More depth movement
-
+    // Velocity based on size (larger meteors fall faster and more dramatically)
+    const baseSpeed = size === "large" ? 18 : size === "medium" ? 14 : 10;
+    const horizontalDrift = (Math.random() - 0.5) * 6; // More horizontal movement
     const velocity: [number, number, number] = [
       horizontalDrift,
-      -(baseSpeed + speedVariation), // More variable downward speed
-      depthMovement,
+      -baseSpeed - Math.random() * 8, // More variable downward speed
+      (Math.random() - 0.5) * 4, // More depth movement
     ];
 
-    // Extended life duration for better visual impact
-    const maxLife = size === "large" ? 12 : size === "medium" ? 9 : 6;
+    // Life duration based on size
+    const maxLife = size === "large" ? 8 : size === "medium" ? 6 : 4;
 
-    // Expanded color palette with more vibrant options
-    const colors = [
-      "#ff6600",
-      "#ff4400",
-      "#ffaa00",
-      "#ff8800",
-      "#ffffff",
-      "#ff2200",
-      "#ffcc00",
-      "#ff9900",
-      "#ffdd33",
-      "#ffffaa",
-    ];
+    // Color variations for meteors
+    const colors = ["#ff6600", "#ff4400", "#ffaa00", "#ff8800", "#ffffff"];
     const color = colors[Math.floor(Math.random() * colors.length)];
 
     const newMeteor: MeteorData = {
@@ -330,44 +297,26 @@ function MeteorSystem() {
     setMeteors((prev) => prev.filter((m) => m.id !== id));
   };
 
-  // Enhanced frequent meteor spawning
+  // Meteor spawning interval
   useEffect(() => {
-    // Create initial meteors immediately with staggered timing
-    setTimeout(() => createMeteor(), 200);
-    setTimeout(() => createMeteor(), 800);
-    setTimeout(() => createMeteor(), 1400);
+    // Create initial meteors immediately
+    setTimeout(() => createMeteor(), 500);
     setTimeout(() => createMeteor(), 2000);
-    setTimeout(() => createMeteor(), 2600);
+    setTimeout(() => createMeteor(), 4000);
 
-    // Primary meteor spawn - very frequent
-    const primarySpawn = setInterval(() => {
+    const spawnInterval = setInterval(() => {
       createMeteor();
-    }, 1200); // Every 1.2 seconds
 
-    // Secondary meteor spawn - creates bursts
-    const burstSpawn = setInterval(() => {
-      const burstCount = 2 + Math.floor(Math.random() * 3); // 2-4 meteors per burst
-      for (let i = 0; i < burstCount; i++) {
-        setTimeout(() => createMeteor(), i * 300); // 300ms apart
-      }
-    }, 3500); // Every 3.5 seconds
-
-    // Tertiary meteor spawn - occasional heavy shower
-    const showerSpawn = setInterval(() => {
-      if (Math.random() < 0.6) {
-        // 60% chance
-        const showerCount = 5 + Math.floor(Math.random() * 4); // 5-8 meteors
-        for (let i = 0; i < showerCount; i++) {
-          setTimeout(() => createMeteor(), i * 150); // 150ms apart for intense shower
+      // Sometimes spawn multiple meteors in a "shower"
+      if (Math.random() < 0.3) {
+        setTimeout(() => createMeteor(), 500);
+        if (Math.random() < 0.1) {
+          setTimeout(() => createMeteor(), 1000);
         }
       }
-    }, 8000); // Every 8 seconds
+    }, 2500); // Base interval of 2.5 seconds
 
-    return () => {
-      clearInterval(primarySpawn);
-      clearInterval(burstSpawn);
-      clearInterval(showerSpawn);
-    };
+    return () => clearInterval(spawnInterval);
   }, []);
 
   return (
