@@ -18,11 +18,24 @@ export default function Home() {
       {/* Main Container */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hero Section */}
-        <section className="min-h-screen flex flex-col items-center justify-center py-16 space-y-16">
-          {/* Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 30 }}
+        <section 
+          className="min-h-screen flex flex-col items-center justify-center py-16 space-y-16 relative"
+          style={{
+            backgroundImage: "url('/hero-bg.jpg')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}
+        >
+          {/* Background Overlay for better text readability */}
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+          
+          {/* Content with higher z-index */}
+          <div className="relative z-10 flex flex-col items-center justify-center space-y-16 w-full">
+            {/* Header */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 30 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="text-center space-y-8"
           >
@@ -60,6 +73,7 @@ export default function Home() {
           >
             <RegisterButton />
           </motion.div>
+          </div>
         </section>
 
         {/* Event Details Section */}
