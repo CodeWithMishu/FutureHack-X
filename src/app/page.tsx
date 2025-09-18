@@ -19,6 +19,105 @@ export default function Home() {
 
   return (
     <>
+      {/* SEO Structured Data for Rich Snippets */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            name: "FutureHack-X 2026 Registration",
+            description:
+              "Register for the ultimate AI and innovation hackathon featuring 19 technology domains",
+            url: "https://future-hack-x.vercel.app",
+            mainEntity: {
+              "@type": "Event",
+              name: "FutureHack-X 2026",
+              startDate: "2026-01-04",
+              location: "Global Event",
+              organizer: {
+                "@type": "Organization",
+                name: "SkillNet Learning",
+              },
+            },
+            breadcrumb: {
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                {
+                  "@type": "ListItem",
+                  position: 1,
+                  name: "Home",
+                  item: "https://future-hack-x.vercel.app",
+                },
+              ],
+            },
+          }),
+        }}
+      />
+
+      {/* Hidden SEO Content for Search Engines */}
+      <div className="sr-only">
+        <h1>FutureHack-X 2026 - The Ultimate AI and Innovation Hackathon</h1>
+        <p>
+          Join thousands of developers, innovators, and creators in FutureHack-X
+          2026, the premier artificial intelligence and innovation hackathon
+          scheduled for January 4, 2026.
+        </p>
+
+        <h2>Featured Technology Domains</h2>
+        <ul>
+          <li>Artificial Intelligence and Machine Learning</li>
+          <li>Blockchain and Web3 Development</li>
+          <li>Internet of Things (IoT) for Smart Cities</li>
+          <li>Augmented Reality and Virtual Reality</li>
+          <li>Cybersecurity and Data Protection</li>
+          <li>Healthcare AI and Medical Innovation</li>
+          <li>Agricultural Technology and AI</li>
+          <li>Smart Mobility and Transportation</li>
+          <li>Education Technology and AI Learning</li>
+          <li>Robotics and Automation</li>
+          <li>Climate Change and Sustainability Tech</li>
+          <li>Financial Technology and AI</li>
+          <li>Gaming and Interactive Media</li>
+          <li>Space Technology and Exploration</li>
+          <li>Quantum Computing Applications</li>
+          <li>Neural Networks and Deep Learning</li>
+          <li>Computer Vision and Image Processing</li>
+          <li>Natural Language Processing</li>
+          <li>AI for Governance and Public Policy</li>
+        </ul>
+
+        <h2>Why Join FutureHack-X 2026?</h2>
+        <ul>
+          <li>Compete in 19 cutting-edge technology domains</li>
+          <li>Learn from industry expert mentors and judges</li>
+          <li>Network with global tech innovators and entrepreneurs</li>
+          <li>Win amazing prizes, recognition, and career opportunities</li>
+          <li>Shape the future of technology and innovation</li>
+          <li>Access to exclusive workshops and masterclasses</li>
+          <li>Collaboration opportunities with leading tech companies</li>
+          <li>Showcase your innovations to industry leaders</li>
+        </ul>
+
+        <h2>Event Details</h2>
+        <ul>
+          <li>Date: January 4, 2026</li>
+          <li>Registration: Limited spots available</li>
+          <li>Format: 24-hour innovation challenge</li>
+          <li>Organizer: SkillNet Learning</li>
+          <li>Categories: 19 technology domains</li>
+          <li>
+            Target Audience: Developers, innovators, creators, students,
+            professionals
+          </li>
+        </ul>
+
+        <address>
+          Organized by SkillNet Learning Email: info@skillnetlearning.com
+          Website: https://skillnetlearning.com
+        </address>
+      </div>
+
       {/* Draggable AI Hackathon 3D Background */}
       <ClientOnlyBackground />
 
