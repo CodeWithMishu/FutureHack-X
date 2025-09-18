@@ -63,41 +63,41 @@ export default function Home() {
         </section>
 
         {/* Event Details Section */}
-        <section className="py-20 space-y-16 flex flex-col items-center justify-center">
+        <section className="py-16 space-y-12 flex flex-col items-center justify-center">
           {/* Event Info Cards */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 max-w-4xl mx-auto justify-items-center"
+            className="grid grid-cols-1 sm:grid-cols-3 gap-8 lg:gap-10 max-w-5xl mx-auto justify-items-center"
           >
-            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 sm:p-8 border border-orange-500/20 text-center">
-              <Calendar className="w-10 h-10 sm:w-12 sm:h-12 text-orange-400 mx-auto mb-4" />
-              <h3 className="text-lg sm:text-xl font-bold text-white mb-3">
+            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-8 lg:p-10 border border-orange-500/20 text-center min-h-[200px] flex flex-col justify-center">
+              <Calendar className="w-12 h-12 lg:w-14 lg:h-14 text-orange-400 mx-auto mb-6" />
+              <h3 className="text-xl lg:text-2xl font-bold text-white mb-4">
                 Event Date
               </h3>
-              <p className="text-gray-300 text-base sm:text-lg">
+              <p className="text-gray-300 text-lg lg:text-xl">
                 January 4, 2026
               </p>
             </div>
 
-            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 sm:p-8 border border-orange-500/20 text-center">
-              <Target className="w-10 h-10 sm:w-12 sm:h-12 text-orange-400 mx-auto mb-4" />
-              <h3 className="text-lg sm:text-xl font-bold text-white mb-3">
+            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-8 lg:p-10 border border-orange-500/20 text-center min-h-[200px] flex flex-col justify-center">
+              <Target className="w-12 h-12 lg:w-14 lg:h-14 text-orange-400 mx-auto mb-6" />
+              <h3 className="text-xl lg:text-2xl font-bold text-white mb-4">
                 Theme
               </h3>
-              <p className="text-gray-300 text-base sm:text-lg">
+              <p className="text-gray-300 text-lg lg:text-xl">
                 Advanced AI & Innovation
               </p>
             </div>
 
-            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 sm:p-8 border border-orange-500/20 text-center">
-              <Code2 className="w-10 h-10 sm:w-12 sm:h-12 text-orange-400 mx-auto mb-4" />
-              <h3 className="text-lg sm:text-xl font-bold text-white mb-3">
+            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-8 lg:p-10 border border-orange-500/20 text-center min-h-[200px] flex flex-col justify-center">
+              <Code2 className="w-12 h-12 lg:w-14 lg:h-14 text-orange-400 mx-auto mb-6" />
+              <h3 className="text-xl lg:text-2xl font-bold text-white mb-4">
                 Domains
               </h3>
-              <p className="text-gray-300 text-base sm:text-lg">
+              <p className="text-gray-300 text-lg lg:text-xl">
                 19 Tech Challenges
               </p>
             </div>
@@ -105,18 +105,18 @@ export default function Home() {
         </section>
 
         {/* Innovation Domains Section - Prominently Displayed */}
-        <section className="py-20 space-y-16 flex flex-col items-center justify-center">
+        <section className="py-24 space-y-12 flex flex-col items-center justify-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center space-y-8 max-w-6xl mx-auto"
+            className="text-center space-y-6 max-w-6xl mx-auto"
           >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white">
               19 Innovation Domains
             </h2>
-            <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto">
+            <p className="text-xl lg:text-2xl text-gray-400 max-w-4xl mx-auto">
               Choose your battlefield and innovate in cutting-edge technology
               domains
             </p>
@@ -127,7 +127,7 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 max-w-6xl mx-auto justify-items-center"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8 max-w-7xl mx-auto justify-items-center"
           >
             {[
               "AI for Governance",
@@ -156,9 +156,9 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.03 }}
                 viewport={{ once: true }}
-                className="bg-gradient-to-br from-orange-500/10 to-red-500/10 backdrop-blur-sm rounded-lg p-4 sm:p-6 border border-orange-500/20 hover:border-orange-500/40 hover:bg-gradient-to-br hover:from-orange-500/20 hover:to-red-500/20 transition-all duration-300 text-center"
+                className="bg-gradient-to-br from-orange-500/10 to-red-500/10 backdrop-blur-sm rounded-xl p-6 lg:p-8 border border-orange-500/20 hover:border-orange-500/40 hover:bg-gradient-to-br hover:from-orange-500/20 hover:to-red-500/20 transition-all duration-300 text-center min-h-[120px] flex items-center justify-center w-full max-w-sm"
               >
-                <p className="text-white font-medium text-sm sm:text-base leading-relaxed">
+                <p className="text-white font-medium text-base lg:text-lg leading-relaxed">
                   {domain}
                 </p>
               </motion.div>
