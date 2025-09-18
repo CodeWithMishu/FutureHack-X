@@ -63,14 +63,14 @@ export default function Home() {
         </section>
 
         {/* Event Details Section */}
-        <section className="py-20 space-y-16">
+        <section className="py-20 space-y-16 flex flex-col items-center justify-center">
           {/* Event Info Cards */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto"
+            className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 max-w-4xl mx-auto justify-items-center"
           >
             <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 sm:p-8 border border-orange-500/20 text-center">
               <Calendar className="w-10 h-10 sm:w-12 sm:h-12 text-orange-400 mx-auto mb-4" />
@@ -92,7 +92,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 sm:p-8 border border-orange-500/20 text-center sm:col-span-2 lg:col-span-1">
+            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 sm:p-8 border border-orange-500/20 text-center">
               <Code2 className="w-10 h-10 sm:w-12 sm:h-12 text-orange-400 mx-auto mb-4" />
               <h3 className="text-lg sm:text-xl font-bold text-white mb-3">
                 Domains
@@ -105,7 +105,7 @@ export default function Home() {
         </section>
 
         {/* Innovation Domains Section - Prominently Displayed */}
-        <section className="py-20 space-y-16 text-center">
+        <section className="py-20 space-y-16 flex flex-col items-center justify-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -127,7 +127,7 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 max-w-7xl mx-auto justify-items-center"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 max-w-6xl mx-auto justify-items-center"
           >
             {[
               "AI for Governance",
@@ -167,13 +167,13 @@ export default function Home() {
         </section>
 
         {/* Call to Action Section */}
-        <section className="py-20 text-center space-y-12">
+        <section className="py-20 flex flex-col items-center justify-center space-y-12">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="space-y-8 max-w-4xl mx-auto"
+            className="text-center space-y-8 max-w-4xl mx-auto"
           >
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
               Ready to Shape the Future?
