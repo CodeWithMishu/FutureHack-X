@@ -24,36 +24,36 @@ export default function Home() {
       {/* Mouse Tracker */}
       <MouseTracker />
 
-      <div className="relative min-h-screen z-10">
-        {/* Main Container with better mobile spacing */}
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative min-h-screen z-10 overflow-x-hidden">
+        {/* Main Container with proper responsive constraints */}
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Hero Section */}
-          <section className="min-h-screen flex flex-col items-center justify-center py-12 sm:py-16 lg:py-20 space-y-12 sm:space-y-16 lg:space-y-20 relative">
+          <section className="min-h-screen flex flex-col items-center justify-center py-8 sm:py-12 lg:py-16 space-y-8 sm:space-y-10 lg:space-y-12 relative">
             {/* Content with proper z-index */}
-            <div className="relative z-20 flex flex-col items-center justify-center space-y-12 sm:space-y-16 lg:space-y-20 w-full">
+            <div className="relative z-20 flex flex-col items-center justify-center space-y-8 sm:space-y-10 lg:space-y-12 w-full max-w-6xl mx-auto">
               {/* Header */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 30 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
-                className="text-center space-y-6 sm:space-y-8 lg:space-y-12"
+                className="text-center space-y-4 sm:space-y-6 lg:space-y-8 w-full"
               >
                 {/* SkillNet Logo - Responsive */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
                   transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                  className="flex justify-center mb-8 sm:mb-10 lg:mb-12 relative z-30"
+                  className="flex justify-center mb-4 sm:mb-6 lg:mb-8 relative z-30"
                 >
                   <div className="bg-black/30 backdrop-blur-sm rounded-lg sm:rounded-xl p-3 sm:p-4 lg:p-6 border border-orange-500/20">
                     <SkillNetLogo
-                      width={280}
-                      height={70}
+                      width={240}
+                      height={60}
                       className="sm:hidden"
                     />
                     <SkillNetLogo
-                      width={350}
-                      height={87}
+                      width={320}
+                      height={80}
                       className="hidden sm:block lg:hidden"
                     />
                     <SkillNetLogo
@@ -64,28 +64,42 @@ export default function Home() {
                   </div>
                 </motion.div>
 
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold text-white tracking-tight leading-tight px-4">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-white tracking-tight leading-tight px-2 sm:px-4">
                   FutureHack-X
                 </h1>
-                <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 lg:gap-6 text-sm sm:text-base lg:text-lg xl:text-xl text-gray-300 mt-6 sm:mt-8 lg:mt-10 px-4">
+                <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 lg:gap-4 text-xs sm:text-sm lg:text-base xl:text-lg text-gray-300 px-2 sm:px-4">
                   <span className="font-semibold">Innovate</span>
-                  <span className="text-orange-400 text-lg sm:text-xl lg:text-2xl">
+                  <span className="text-orange-400 text-sm sm:text-base lg:text-lg">
                     •
                   </span>
                   <span className="font-semibold">Create</span>
-                  <span className="text-orange-400 text-lg sm:text-xl lg:text-2xl">
+                  <span className="text-orange-400 text-sm sm:text-base lg:text-lg">
                     •
                   </span>
                   <span className="font-semibold">Future</span>
                 </div>
               </motion.div>
 
+              {/* "Get ready for the ultimate..." text */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="text-center px-4"
+              >
+                <p className="text-sm sm:text-base lg:text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed">
+                  Get ready for the ultimate innovation challenge. Join
+                  thousands of creators, developers, and visionaries in shaping
+                  the future through technology.
+                </p>
+              </motion.div>
+
               {/* Countdown Timer - Better mobile sizing */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                className="w-full max-w-sm sm:max-w-2xl lg:max-w-4xl px-4"
+                transition={{ duration: 0.8, delay: 0.5 }}
+                className="w-full max-w-xs sm:max-w-lg lg:max-w-2xl xl:max-w-4xl px-4"
               >
                 <CountdownTimer3D targetDate="2026-01-04T00:00:00Z" />
               </motion.div>
@@ -94,8 +108,8 @@ export default function Home() {
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-                className="w-full max-w-xs sm:max-w-md lg:max-w-lg px-4"
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="w-full max-w-xs sm:max-w-sm lg:max-w-md px-4"
               >
                 <RegisterButton />
               </motion.div>
