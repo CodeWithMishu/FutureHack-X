@@ -165,36 +165,6 @@ export default function Home() {
             ))}
           </motion.div>
         </section>
-
-        {/* Call to Action Section */}
-        <section className="py-20 flex flex-col items-center justify-center space-y-12">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center space-y-8 max-w-4xl mx-auto"
-          >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
-              Ready to Shape the Future?
-            </h2>
-            <p className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
-              Join thousands of innovators, creators, and visionaries in the
-              ultimate hackathon experience.
-            </p>
-          </motion.div>
-
-          {/* Final Register Button */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="max-w-lg mx-auto flex justify-center"
-          >
-            <RegisterButton />
-          </motion.div>
-        </section>
       </div>
     </div>
   );
