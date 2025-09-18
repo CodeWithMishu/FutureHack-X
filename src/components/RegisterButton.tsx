@@ -92,7 +92,7 @@ export default function RegisterButton() {
         className="space-y-4"
       >
         <p className="text-white/80 text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-medium">
-          Join innovators, creators, and visionaries in shaping tomorrow's
+          Join innovators, creators, and visionaries in shaping tomorrow&apos;s
           technology.
         </p>
         <p className="text-orange-400 text-sm sm:text-base font-semibold">
@@ -103,7 +103,7 @@ export default function RegisterButton() {
         <div className="flex justify-center items-center space-x-2 text-xs sm:text-sm text-orange-300">
           <div className="w-2 h-2 bg-orange-400 rounded-full animate-pulse"></div>
           <span className="font-medium">
-            Secure your spot before it's too late
+            Secure your spot before it&apos;s too late
           </span>
           <div className="w-2 h-2 bg-orange-400 rounded-full animate-pulse"></div>
         </div>
