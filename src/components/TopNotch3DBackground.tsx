@@ -378,7 +378,7 @@ function EnergyNetwork() {
       networkRef.current.children.forEach((child, index) => {
         child.rotation.y = state.clock.elapsedTime * (0.05 + index * 0.02);
         if ("material" in child && child.material) {
-          (child.material as any).opacity =
+          (child.material as THREE.Material).opacity =
             0.05 + Math.sin(state.clock.elapsedTime * 2 + index) * 0.05;
         }
       });

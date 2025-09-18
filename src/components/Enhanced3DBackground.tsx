@@ -68,7 +68,7 @@ function DataStreams() {
           child instanceof THREE.Mesh &&
           child.material instanceof THREE.Material
         ) {
-          (child.material as any).opacity =
+          (child.material as THREE.Material).opacity =
             Math.sin(state.clock.elapsedTime + index) * 0.3 + 0.1;
         }
       });

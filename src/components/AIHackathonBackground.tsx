@@ -4,26 +4,21 @@ import { useRef, useMemo } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import {
   Float,
-  Text3D,
   MeshDistortMaterial,
   Sphere,
   Octahedron,
-  Icosahedron,
   Dodecahedron,
   Torus,
   Box,
   Cylinder,
-  Cone,
   Stars,
   Environment,
-  OrbitControls,
 } from "@react-three/drei";
 import * as THREE from "three";
 
 // AI Brain-like Neural Network
 function AIBrain() {
   const brainRef = useRef<THREE.Group>(null);
-  const spheresRef = useRef<THREE.InstancedMesh>(null);
   const connectionsRef = useRef<THREE.Group>(null);
 
   const nodes = useMemo(() => {

@@ -74,7 +74,7 @@ export default function MouseTracker() {
   return (
     <div className="fixed inset-0 pointer-events-none z-50">
       {/* Mouse Trail */}
-      {mouseTrail.map((point, index) => {
+      {mouseTrail.map((point) => {
         const age = Date.now() - point.timestamp;
         const opacity = Math.max(0, 1 - age / 1000);
         const scale = Math.max(0.1, 1 - age / 1000);

@@ -73,8 +73,6 @@ function Meteor({
       if (trailRef.current) {
         const positions = trailRef.current.geometry.attributes.position
           .array as Float32Array;
-        const colors = trailRef.current.geometry.attributes.color
-          .array as Float32Array;
 
         // Shift trail positions
         for (let i = trailParticles.count - 1; i > 0; i--) {
@@ -402,13 +400,22 @@ function StarfieldScene() {
 // Enhanced Background Component with Stars and Meteors
 export default function DraggableAIBackground() {
   return (
-    <div className="fixed inset-0 w-full h-full z-0">
+    <div
+      className="fixed inset-0 w-full h-full pointer-events-none"
+      style={{ zIndex: -1 }}
+    >
       <Canvas
         camera={{ position: [0, 0, 30], fov: 75 }}
         shadows
         style={{
           background:
             "radial-gradient(circle at 30% 70%, #1a1a2e 0%, #16213e 25%, #0f3460 50%, #0e1b2e 75%, #000000 100%)",
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          zIndex: -1,
         }}
         dpr={[1, 2]}
         gl={{
