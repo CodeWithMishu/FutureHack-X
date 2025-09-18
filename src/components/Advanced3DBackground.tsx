@@ -2,7 +2,16 @@
 
 import { useRef, useMemo } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Float, Box, Sphere, Octahedron, Icosahedron, Dodecahedron, Torus, Cone } from "@react-three/drei";
+import {
+  Float,
+  Box,
+  Sphere,
+  Octahedron,
+  Icosahedron,
+  Dodecahedron,
+  Torus,
+  Cone,
+} from "@react-three/drei";
 import * as THREE from "three";
 
 // Floating 3D Geometric Elements
@@ -215,12 +224,12 @@ function AdvancedParticles() {
     if (ref.current) {
       ref.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.05) * 0.1;
       ref.current.rotation.y = Math.sin(state.clock.elapsedTime * 0.08) * 0.15;
-      
+
       // Enhanced mouse interaction
       const mouse = state.mouse;
       ref.current.rotation.x += mouse.y * 0.08;
       ref.current.rotation.y += mouse.x * 0.08;
-      
+
       // Pulsing effect
       const scale = 1 + Math.sin(state.clock.elapsedTime * 0.5) * 0.1;
       ref.current.scale.setScalar(scale);
@@ -228,7 +237,15 @@ function AdvancedParticles() {
   });
 
   return (
-    <points ref={ref} args={[new THREE.BufferGeometry().setAttribute('position', new THREE.BufferAttribute(particles, 3))]}>
+    <points
+      ref={ref}
+      args={[
+        new THREE.BufferGeometry().setAttribute(
+          "position",
+          new THREE.BufferAttribute(particles, 3)
+        ),
+      ]}
+    >
       <pointsMaterial
         color="#4fc3f7"
         size={0.015}
