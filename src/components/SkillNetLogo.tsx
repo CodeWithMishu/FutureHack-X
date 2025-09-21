@@ -14,13 +14,13 @@ const SkillNetLogo = ({
       {/* SkillNet PNG Logo - Properly Sized to Content */}
       <div
         className="relative px-2 py-1 rounded-lg" // Reduced padding, especially vertical
-        style={{ width: height * 2.7, height: height * 0.7,marginTop:15 }} // Better aspect ratio for logo content
+        style={{ width: height * 0.91, height: height * 0.28,marginTop:15 }} // Better aspect ratio for logo content
       >
         <Image
           src="/skill-net-logo.png"
           alt="SkillNet Logo"
-          width={height * 2.5}
-          height={height * 0.5}
+          width={height * 0.89}
+          height={height * 0.2}
           className="drop-shadow-2xl object-contain" // Enhanced shadow
           priority
         />

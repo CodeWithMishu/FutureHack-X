@@ -166,6 +166,18 @@ export default function Home() {
                   </div>
                 </motion.div>
 
+                {/* Presents Text */}
+                <motion.div
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 15 }}
+                  transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+                  className="text-center"
+                >
+                  <p className="text-xs sm:text-sm lg:text-base text-gray-400 font-light tracking-wide uppercase mb-4">
+                    presents
+                  </p>
+                </motion.div>
+
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white tracking-tight leading-tight mt-8 mb-6">
                   FutureHack-X
                 </h1>
