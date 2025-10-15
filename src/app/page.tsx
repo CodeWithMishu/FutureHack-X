@@ -146,18 +146,18 @@ export default function Home() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
                   transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                  className="flex justify-center mb-8 sm:mb-12 pt-4 sm:pt-8"
+                  className="flex justify-center mb-8 sm:mb-12 pt-4 sm:pt-8 px-4 sm:px-0"
                 >
-                  <div className="bg-black/30 backdrop-blur-sm rounded-xl p-3 sm:p-6 lg:p-8 border border-orange-500/20 w-full max-w-5xl mx-2 sm:mx-4">
+                  <div className="bg-black/30 backdrop-blur-sm rounded-xl p-6 sm:p-6 lg:p-8 border border-orange-500/20 w-full sm:max-w-5xl shadow-2xl shadow-black/50">
                     {/* Container for both logos - Responsive Layout */}
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 lg:gap-8">
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-6 lg:gap-8">
                       {/* SkillNet Logo - Responsive Sizes */}
                       <div className="flex flex-col items-center order-1 w-full sm:w-auto">
-                        {/* Mobile: Small (up to sm) */}
+                        {/* Mobile: Much Larger (up to sm) */}
                         <div className="sm:hidden w-full flex justify-center">
                           <SkillNetLogo
-                            width={180}
-                            height={54}
+                            width={280}
+                            height={84}
                             className="max-w-full h-auto"
                           />
                         </div>
@@ -182,21 +182,21 @@ export default function Home() {
                       </div>
 
                       {/* Collaboration Text - Responsive Typography */}
-                      <div className="flex flex-col items-center order-2 px-1 sm:px-2 my-2 sm:my-0">
-                        <span className="text-white/80 text-xs sm:text-sm md:text-base lg:text-lg font-light text-center leading-relaxed whitespace-nowrap">
+                      <div className="flex flex-col items-center order-2 px-2 sm:px-2 my-4 sm:my-0">
+                        <span className="text-white/90 text-sm sm:text-sm md:text-base lg:text-lg font-light text-center leading-relaxed whitespace-nowrap bg-gradient-to-r from-orange-400/20 to-blue-400/20 px-3 py-1.5 rounded-full border border-white/10">
                           in collaboration with
                         </span>
                       </div>
 
                       {/* CPUH Logo - Responsive Sizes */}
                       <div className="flex flex-col items-center order-3 w-full sm:w-auto">
-                        {/* Mobile: Small (up to sm) */}
+                        {/* Mobile: Much Larger (up to sm) */}
                         <div className="sm:hidden w-full flex justify-center">
                           <Image
                             src="/cpuh.png"
                             alt="Career Point University Hamirpur"
-                            width={72}
-                            height={72}
+                            width={110}
+                            height={110}
                             className="drop-shadow-lg max-w-full h-auto"
                             priority
                           />
