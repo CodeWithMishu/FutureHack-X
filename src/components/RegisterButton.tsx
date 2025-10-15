@@ -6,7 +6,8 @@ import { Calendar, Users, Zap, ArrowRight } from "lucide-react";
 export default function RegisterButton() {
   const handleRegister = () => {
     // Open registration page in new tab
-    window.open("https://skillnetlearning.com/product/futurehack-x/", "_blank");
+    window.open("https://forms.gle/4Eza3QEZJ5kTwyKW7", "_blank");
+    // window.open("https://skillnetlearning.com/product/futurehack-x/", "_blank");
   };
 
   return (

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Calendar, Code2, Target } from "lucide-react";
+import Image from "next/image";
 import ClientOnlyBackground from "@/components/ClientOnlyBackground";
 import CountdownTimer3D from "@/components/CountdownTimer3D";
 import RegisterButton from "@/components/RegisterButton";
@@ -140,7 +141,7 @@ export default function Home() {
                 transition={{ duration: 0.8, ease: "easeOut" }}
                 className="space-y-8"
               >
-                {/* SkillNet Logo - Responsive with proper spacing */}
+                {/* SkillNet Logo + CPUH Logo - Side by Side */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
@@ -148,21 +149,62 @@ export default function Home() {
                   className="flex justify-center mb-12 pt-8"
                 >
                   <div className="bg-black/30 backdrop-blur-sm rounded-xl p-6 lg:p-8 border border-orange-500/20">
-                    <SkillNetLogo
-                      width={400}
-                      height={120}
-                      className="sm:hidden"
-                    />
-                    <SkillNetLogo
-                      width={520}
-                      height={150}
-                      className="hidden sm:block lg:hidden"
-                    />
-                    <SkillNetLogo
-                      width={640}
-                      height={180}
-                      className="hidden lg:block"
-                    />
+                    {/* Container for both logos */}
+                    <div className="flex flex-col lg:flex-row items-center justify-center gap-6 lg:gap-8">
+                      {/* SkillNet Logo */}
+                      <div className="flex flex-col items-center">
+                        <SkillNetLogo
+                          width={300}
+                          height={90}
+                          className="sm:hidden"
+                        />
+                        <SkillNetLogo
+                          width={400}
+                          height={120}
+                          className="hidden sm:block lg:hidden"
+                        />
+                        <SkillNetLogo
+                          width={480}
+                          height={140}
+                          className="hidden lg:block"
+                        />
+                      </div>
+
+                      {/* Collaboration Text */}
+                      <div className="flex flex-col items-center text-white/80 text-sm lg:text-base">
+                        <span className="font-light">
+                          in collaboration with
+                        </span>
+                      </div>
+
+                      {/* CPUH Logo */}
+                      <div className="flex flex-col items-center">
+                        <Image
+                          src="/cpuh.png"
+                          alt="Career Point University Hamirpur"
+                          width={120}
+                          height={120}
+                          className="sm:hidden drop-shadow-lg"
+                          priority
+                        />
+                        <Image
+                          src="/cpuh.png"
+                          alt="Career Point University Hamirpur"
+                          width={140}
+                          height={140}
+                          className="hidden sm:block lg:hidden drop-shadow-lg"
+                          priority
+                        />
+                        <Image
+                          src="/cpuh.png"
+                          alt="Career Point University Hamirpur"
+                          width={160}
+                          height={160}
+                          className="hidden lg:block drop-shadow-lg"
+                          priority
+                        />
+                      </div>
+                    </div>
                   </div>
                 </motion.div>
 
