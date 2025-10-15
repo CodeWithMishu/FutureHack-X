@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useMemo, useState, useEffect } from "react";
+import { useRef, useMemo, useState, useEffect, useCallback } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Environment, Sphere, OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
@@ -194,127 +194,133 @@ function MeteorSystem() {
   const { camera, raycaster, mouse } = useThree();
 
   // Create a new meteor (optionally targeted)
-  const createMeteor = (targetPosition?: [number, number, number]) => {
-    const sizes: ("small" | "medium" | "large")[] = [
-      "small",
-      "medium",
-      "large",
-    ];
-    const weights = [0.5, 0.35, 0.15]; // More balanced: 50% small, 35% medium, 15% large
+  const createMeteor = useCallback(
+    (targetPosition?: [number, number, number]) => {
+      const sizes: ("small" | "medium" | "large")[] = [
+        "small",
+        "medium",
+        "large",
+      ];
+      const weights = [0.5, 0.35, 0.15]; // More balanced: 50% small, 35% medium, 15% large
 
-    // Weighted random selection
-    const random = Math.random();
-    let size: "small" | "medium" | "large" = "small";
-    let cumulative = 0;
-    for (let i = 0; i < weights.length; i++) {
-      cumulative += weights[i];
-      if (random <= cumulative) {
-        size = sizes[i];
-        break;
+      // Weighted random selection
+      const random = Math.random();
+      let size: "small" | "medium" | "large" = "small";
+      let cumulative = 0;
+      for (let i = 0; i < weights.length; i++) {
+        cumulative += weights[i];
+        if (random <= cumulative) {
+          size = sizes[i];
+          break;
+        }
       }
-    }
 
-    // Much wider and varied spawn positions from different locations
-    const spawnVariation = Math.random();
-    let startX: number, startY: number, startZ: number;
+      // Much wider and varied spawn positions from different locations
+      const spawnVariation = Math.random();
+      let startX: number, startY: number, startZ: number;
 
-    if (spawnVariation < 0.7) {
-      // 70% spawn from top (normal meteor shower)
-      startX = (Math.random() - 0.5) * 150; // Even wider spawn area
-      startY = 60 + Math.random() * 30; // Higher and more varied spawn height
-      startZ = (Math.random() - 0.5) * 120; // Much deeper spawn area
-    } else if (spawnVariation < 0.85) {
-      // 15% spawn from sides (diagonal meteors)
-      startX =
-        Math.random() < 0.5
-          ? -80 - Math.random() * 20
-          : 80 + Math.random() * 20;
-      startY = 20 + Math.random() * 40;
-      startZ = (Math.random() - 0.5) * 100;
-    } else {
-      // 15% spawn from far back (depth meteors)
-      startX = (Math.random() - 0.5) * 100;
-      startY = 40 + Math.random() * 20;
-      startZ = -60 - Math.random() * 40;
-    }
+      if (spawnVariation < 0.7) {
+        // 70% spawn from top (normal meteor shower)
+        startX = (Math.random() - 0.5) * 150; // Even wider spawn area
+        startY = 60 + Math.random() * 30; // Higher and more varied spawn height
+        startZ = (Math.random() - 0.5) * 120; // Much deeper spawn area
+      } else if (spawnVariation < 0.85) {
+        // 15% spawn from sides (diagonal meteors)
+        startX =
+          Math.random() < 0.5
+            ? -80 - Math.random() * 20
+            : 80 + Math.random() * 20;
+        startY = 20 + Math.random() * 40;
+        startZ = (Math.random() - 0.5) * 100;
+      } else {
+        // 15% spawn from far back (depth meteors)
+        startX = (Math.random() - 0.5) * 100;
+        startY = 40 + Math.random() * 20;
+        startZ = -60 - Math.random() * 40;
+      }
 
-    // Enhanced velocity system for more dynamic movement
-    const baseSpeed = size === "large" ? 20 : size === "medium" ? 16 : 12;
-    const speedVariation = Math.random() * 10; // More speed variation
-    const horizontalDrift = (Math.random() - 0.5) * 12; // Increased horizontal movement
-    const depthMovement = (Math.random() - 0.5) * 8; // More depth movement
+      // Enhanced velocity system for more dynamic movement
+      const baseSpeed = size === "large" ? 20 : size === "medium" ? 16 : 12;
+      const speedVariation = Math.random() * 10; // More speed variation
+      const horizontalDrift = (Math.random() - 0.5) * 12; // Increased horizontal movement
+      const depthMovement = (Math.random() - 0.5) * 8; // More depth movement
 
-    const velocity: [number, number, number] = [
-      horizontalDrift,
-      -(baseSpeed + speedVariation), // More variable downward speed
-      depthMovement,
-    ];
+      const velocity: [number, number, number] = [
+        horizontalDrift,
+        -(baseSpeed + speedVariation), // More variable downward speed
+        depthMovement,
+      ];
 
-    // Extended life duration for better visual impact
-    const maxLife = size === "large" ? 12 : size === "medium" ? 9 : 6;
+      // Extended life duration for better visual impact
+      const maxLife = size === "large" ? 12 : size === "medium" ? 9 : 6;
 
-    // Expanded color palette with more vibrant options
-    const colors = [
-      "#ff6600",
-      "#ff4400",
-      "#ffaa00",
-      "#ff8800",
-      "#ffffff",
-      "#ff2200",
-      "#ffcc00",
-      "#ff9900",
-      "#ffdd33",
-      "#ffffaa",
-    ];
-    const color = colors[Math.floor(Math.random() * colors.length)];
+      // Expanded color palette with more vibrant options
+      const colors = [
+        "#ff6600",
+        "#ff4400",
+        "#ffaa00",
+        "#ff8800",
+        "#ffffff",
+        "#ff2200",
+        "#ffcc00",
+        "#ff9900",
+        "#ffdd33",
+        "#ffffaa",
+      ];
+      const color = colors[Math.floor(Math.random() * colors.length)];
 
-    const newMeteor: MeteorData = {
-      id: meteorIdRef.current++,
-      size,
-      startPosition: [startX, startY, startZ],
-      velocity,
-      life: maxLife,
-      maxLife,
-      color,
-      targetPosition, // Add target position for click-directed meteors
-    };
+      const newMeteor: MeteorData = {
+        id: meteorIdRef.current++,
+        size,
+        startPosition: [startX, startY, startZ],
+        velocity,
+        life: maxLife,
+        maxLife,
+        color,
+        targetPosition, // Add target position for click-directed meteors
+      };
 
-    setMeteors((prev) => [...prev, newMeteor]);
-  };
+      setMeteors((prev) => [...prev, newMeteor]);
+    },
+    []
+  );
 
   // Handle canvas clicks for meteor targeting
-  const handleCanvasClick = (event: MouseEvent) => {
-    event.preventDefault();
+  const handleCanvasClick = useCallback(
+    (event: MouseEvent) => {
+      event.preventDefault();
 
-    // Get canvas bounds
-    const canvas = event.target as HTMLCanvasElement;
-    const rect = canvas.getBoundingClientRect();
+      // Get canvas bounds
+      const canvas = event.target as HTMLCanvasElement;
+      const rect = canvas.getBoundingClientRect();
 
-    // Convert to normalized device coordinates
-    mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-    mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+      // Convert to normalized device coordinates
+      mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+      mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
 
-    // Cast ray from camera through mouse position
-    raycaster.setFromCamera(mouse, camera);
+      // Cast ray from camera through mouse position
+      raycaster.setFromCamera(mouse, camera);
 
-    // Create target point at medium distance
-    const targetPosition = new THREE.Vector3();
-    raycaster.ray.at(25, targetPosition);
+      // Create target point at medium distance
+      const targetPosition = new THREE.Vector3();
+      raycaster.ray.at(25, targetPosition);
 
-    // Create 3-5 meteors toward the click target
-    const meteorCount = 3 + Math.floor(Math.random() * 3);
-    for (let i = 0; i < meteorCount; i++) {
-      setTimeout(() => {
-        // Add some spread to the target
-        const spreadTarget: [number, number, number] = [
-          targetPosition.x + (Math.random() - 0.5) * 10,
-          targetPosition.y + (Math.random() - 0.5) * 5,
-          targetPosition.z + (Math.random() - 0.5) * 10,
-        ];
-        createMeteor(spreadTarget);
-      }, i * 100);
-    }
-  };
+      // Create 3-5 meteors toward the click target
+      const meteorCount = 3 + Math.floor(Math.random() * 3);
+      for (let i = 0; i < meteorCount; i++) {
+        setTimeout(() => {
+          // Add some spread to the target
+          const spreadTarget: [number, number, number] = [
+            targetPosition.x + (Math.random() - 0.5) * 10,
+            targetPosition.y + (Math.random() - 0.5) * 5,
+            targetPosition.z + (Math.random() - 0.5) * 10,
+          ];
+          createMeteor(spreadTarget);
+        }, i * 100);
+      }
+    },
+    [mouse, raycaster, camera, createMeteor]
+  );
 
   // Add click listener to canvas
   useEffect(() => {
@@ -323,7 +329,7 @@ function MeteorSystem() {
       canvas.addEventListener("click", handleCanvasClick);
       return () => canvas.removeEventListener("click", handleCanvasClick);
     }
-  }, []);
+  }, [handleCanvasClick]);
 
   // Remove completed meteor
   const removeMeteor = (id: number) => {

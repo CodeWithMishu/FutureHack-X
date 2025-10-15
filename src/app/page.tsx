@@ -141,28 +141,39 @@ export default function Home() {
                 transition={{ duration: 0.8, ease: "easeOut" }}
                 className="space-y-8"
               >
-                {/* SkillNet Logo + CPUH Logo - Side by Side */}
+                {/* SkillNet Logo + CPUH Logo - Responsive Layout */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
                   transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                  className="flex justify-center mb-12 pt-8"
+                  className="flex justify-center mb-8 sm:mb-12 pt-4 sm:pt-8"
                 >
-                  <div className="bg-black/30 backdrop-blur-sm rounded-xl p-6 lg:p-8 border border-orange-500/20">
-                    {/* Container for both logos */}
-                    <div className="flex flex-col lg:flex-row items-center justify-center gap-6 lg:gap-8">
-                      {/* SkillNet Logo */}
-                      <div className="flex flex-col items-center">
+                  <div className="bg-black/30 backdrop-blur-sm rounded-xl p-3 sm:p-6 lg:p-8 border border-orange-500/20 w-full max-w-5xl mx-2 sm:mx-4">
+                    {/* Container for both logos - Responsive Layout */}
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 lg:gap-8">
+                      {/* SkillNet Logo - Responsive Sizes */}
+                      <div className="flex flex-col items-center order-1 w-full sm:w-auto">
+                        {/* Mobile: Small (up to sm) */}
+                        <div className="sm:hidden w-full flex justify-center">
+                          <SkillNetLogo
+                            width={180}
+                            height={54}
+                            className="max-w-full h-auto"
+                          />
+                        </div>
+                        {/* Tablet: Medium (sm to md) */}
                         <SkillNetLogo
                           width={300}
                           height={90}
-                          className="sm:hidden"
+                          className="hidden sm:block md:hidden"
                         />
+                        {/* Desktop: Large (md to lg) */}
                         <SkillNetLogo
                           width={400}
                           height={120}
-                          className="hidden sm:block lg:hidden"
+                          className="hidden md:block lg:hidden"
                         />
+                        {/* Large Desktop: Extra Large (lg+) */}
                         <SkillNetLogo
                           width={480}
                           height={140}
@@ -170,36 +181,50 @@ export default function Home() {
                         />
                       </div>
 
-                      {/* Collaboration Text */}
-                      <div className="flex flex-col items-center text-white/80 text-sm lg:text-base">
-                        <span className="font-light">
+                      {/* Collaboration Text - Responsive Typography */}
+                      <div className="flex flex-col items-center order-2 px-1 sm:px-2 my-2 sm:my-0">
+                        <span className="text-white/80 text-xs sm:text-sm md:text-base lg:text-lg font-light text-center leading-relaxed whitespace-nowrap">
                           in collaboration with
                         </span>
                       </div>
 
-                      {/* CPUH Logo */}
-                      <div className="flex flex-col items-center">
+                      {/* CPUH Logo - Responsive Sizes */}
+                      <div className="flex flex-col items-center order-3 w-full sm:w-auto">
+                        {/* Mobile: Small (up to sm) */}
+                        <div className="sm:hidden w-full flex justify-center">
+                          <Image
+                            src="/cpuh.png"
+                            alt="Career Point University Hamirpur"
+                            width={72}
+                            height={72}
+                            className="drop-shadow-lg max-w-full h-auto"
+                            priority
+                          />
+                        </div>
+                        {/* Tablet: Medium (sm to md) */}
+                        <Image
+                          src="/cpuh.png"
+                          alt="Career Point University Hamirpur"
+                          width={100}
+                          height={100}
+                          className="hidden sm:block md:hidden drop-shadow-lg"
+                          priority
+                        />
+                        {/* Desktop: Large (md to lg) */}
                         <Image
                           src="/cpuh.png"
                           alt="Career Point University Hamirpur"
                           width={120}
                           height={120}
-                          className="sm:hidden drop-shadow-lg"
+                          className="hidden md:block lg:hidden drop-shadow-lg"
                           priority
                         />
+                        {/* Large Desktop: Extra Large (lg+) */}
                         <Image
                           src="/cpuh.png"
                           alt="Career Point University Hamirpur"
                           width={140}
                           height={140}
-                          className="hidden sm:block lg:hidden drop-shadow-lg"
-                          priority
-                        />
-                        <Image
-                          src="/cpuh.png"
-                          alt="Career Point University Hamirpur"
-                          width={160}
-                          height={160}
                           className="hidden lg:block drop-shadow-lg"
                           priority
                         />
