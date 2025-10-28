@@ -38,8 +38,6 @@ export default function RegistrationForm({ onClose }: { onClose: () => void }) {
   });
 
   const [submitting, setSubmitting] = useState(false);
-  const [success, setSuccess] = useState<string | null>(null);
-  const [error, setError] = useState<string | null>(null);
 
   const update = (k: keyof FormState, v: string) =>
     setForm((s) => ({ ...s, [k]: v }));
@@ -47,8 +45,6 @@ export default function RegistrationForm({ onClose }: { onClose: () => void }) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
-    setError(null);
-    setSuccess(null);
 
     try {
       console.log("Submitting form data:", form);
@@ -72,10 +68,6 @@ export default function RegistrationForm({ onClose }: { onClose: () => void }) {
       const result = await response.json();
       console.log("Success response:", result);
 
-      setSuccess(
-        "Registration submitted successfully! We'll be in touch soon."
-      );
-
       // Reset form after successful submission
       setTimeout(() => {
         setForm({
@@ -97,11 +89,7 @@ export default function RegistrationForm({ onClose }: { onClose: () => void }) {
       }, 2000);
     } catch (error) {
       console.error("Form submission error:", error);
-      setError(
-        error instanceof Error
-          ? error.message
-          : "Failed to submit registration. Please try again."
-      );
+      // You can add error handling UI here if needed
     } finally {
       setSubmitting(false);
     }
@@ -549,7 +537,7 @@ export default function RegistrationForm({ onClose }: { onClose: () => void }) {
               className="flex flex-col items-center justify-center space-y-4 pt-8 border-t border-white/20"
             >
               <div className="text-sm text-white/60 text-center">
-                We'll use this information only for event coordination.
+                We&apos;ll use this information only for event coordination.
               </div>
 
               <button
