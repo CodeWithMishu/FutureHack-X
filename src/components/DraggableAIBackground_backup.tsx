@@ -290,7 +290,7 @@ function MeteorSystem() {
       canvas.addEventListener("click", handleCanvasClick);
       return () => canvas.removeEventListener("click", handleCanvasClick);
     }
-  }, []);
+  }, [handleCanvasClick]);
 
   // Remove completed meteor
   const removeMeteor = (id: number) => {

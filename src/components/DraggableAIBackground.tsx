@@ -374,7 +374,7 @@ function MeteorSystem() {
       clearInterval(burstSpawn);
       clearInterval(showerSpawn);
     };
-  }, []);
+  }, [createMeteor]);
 
   return (
     <>
