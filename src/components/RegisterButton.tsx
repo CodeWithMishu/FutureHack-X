@@ -2,12 +2,14 @@
 
 import { motion } from "framer-motion";
 import { Calendar, Users, Zap, ArrowRight } from "lucide-react";
+import React, { useState } from "react";
+import RegistrationForm from "./RegistrationForm";
 
 export default function RegisterButton() {
+  const [open, setOpen] = useState(false);
+
   const handleRegister = () => {
-    // Open registration page in new tab
-    window.open("https://forms.gle/4Eza3QEZJ5kTwyKW7", "_blank");
-    // window.open("https://skillnetlearning.com/product/futurehack-x/", "_blank");
+    setOpen(true);
   };
 
   return (
@@ -62,6 +64,8 @@ export default function RegisterButton() {
         {/* Additional Outer Glow */}
         <div className="absolute inset-0 bg-gradient-to-r from-orange-400 via-red-400 to-orange-500 rounded-2xl blur-2xl opacity-30 group-hover:opacity-50 transition-opacity duration-300 -z-20 scale-125" />
       </motion.div>
+
+      {open && <RegistrationForm onClose={() => setOpen(false)} />}
 
       {/* Event Details - Enhanced */}
       <motion.div

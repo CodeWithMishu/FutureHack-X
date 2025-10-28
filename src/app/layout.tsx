@@ -116,6 +116,7 @@ export default function RootLayout({
         {/* Additional SEO meta tags */}
         <meta name="theme-color" content="#f97316" />
         <meta name="msapplication-TileColor" content="#f97316" />
+        <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta
           name="apple-mobile-web-app-status-bar-style"
@@ -219,6 +220,7 @@ export default function RootLayout({
       </head>
       <body
         className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} font-sans antialiased bg-black text-white`}
+        suppressHydrationWarning={true}
       >
         {children}
       </body>
